@@ -1246,4 +1246,18 @@ public class Tree1 {
             }
         }
     }
+    public static boolean FlipEquivalent(TreeNode root1,TreeNode root2){
+        if(root1==null && root2==null){
+            return true;
+        }
+        if(root1==null || root2==null){
+            return false;
+        }
+        if(root1.data!=root2.data){
+            return false;
+        }
+        boolean a=FlipEquivalent(root1.left, root2.left) && FlipEquivalent(root1.right, root2.right);
+        boolean b=FlipEquivalent(root1.left, root2.right) && FlipEquivalent(root1.right, root2.left);
+        return a||b;
+    }
 }
